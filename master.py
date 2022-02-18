@@ -3,7 +3,7 @@
 
 import hashlib
 import argparse
-from popular_password_struct import popularPasswords
+from popular_passwords_struct import popularPasswords
 
 
 # Assumption: the number of popular passwords is less than the number of hashes passwords
