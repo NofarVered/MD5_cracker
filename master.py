@@ -5,6 +5,8 @@ import argparse
 from tkinter import EXCEPTION
 from popular_passwords_struct import popularPasswords
 import threading
+import time
+
 
 # we have 10^8 option of numbers with eight digits 05X-XXXXXXX
 TOTAL_NUMBER = 100_000_000
@@ -54,6 +56,7 @@ def guess_numbers(start, end, hashes, founds):
 
 
 if __name__ == "__main__":
+    start_time = time.time()
     # handeling with files and args:
     parser = argparse.ArgumentParser()
     parser.add_argument(
@@ -88,3 +91,6 @@ if __name__ == "__main__":
     # create an output file by the founds passwords:
     creat_output_file(founds)
     print("------------------ The output file is ready in your folder... :-) ")
+    elapsed_time = time.time()
+    total_time = elapsed_time - start_time
+    print("Seconds since epoch =", total_time)

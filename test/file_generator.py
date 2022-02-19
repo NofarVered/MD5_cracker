@@ -3,6 +3,7 @@ import string
 import random
 
 
+# create hashes and results files
 def add_hashes_files():
     f = open("./test/hashes.txt", mode="w")
     r = open("./test/results.txt", mode="w")
