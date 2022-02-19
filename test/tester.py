@@ -1,5 +1,6 @@
+#!/usr/bin/env python3
+
 from file_generator import add_hashes_files
-# import master
 
 
 if __name__ == "__main__":

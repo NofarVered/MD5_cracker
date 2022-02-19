@@ -1,8 +1,14 @@
 # MD5_cracker
 
-Usage:
-#1 python ./test/file_generator.py
-#2 python master.py -f ./test/hashes.txt -t 4
+There is two ways to run this code, with the tester (with a random passwords file that the tester generate ) or without, on a real file!
+
+--- If you want to check with your own file, try:
+python master.py -f ./test/hashes.txt -t 4
+./test/hashes.txt, is an example for a directory path
+and 4 is the number of threads you want, you can choose whatever you want, the defult is 4.
+
+--- For a tester check, try:
+python ./test/tester.py
 
 # time
 
