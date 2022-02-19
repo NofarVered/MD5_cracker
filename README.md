@@ -17,7 +17,7 @@ After the test all the files are deleted automatically ... also the output.
 # output
 
 The output is a file that will wait for you, if anything didn't went wrong, at the same folder with the master.py.
-The schema of the output.txt is : "the_encrypted_password":"the_decrypted_password". Also, the script print the computation time.
+The schema of the output.txt is : "the_encrypted_password":"the_decrypted_password". Also, the script prints the computation time.
 
 # time
 
