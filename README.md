@@ -1,6 +1,6 @@
 # MD5_cracker
 
-There is two ways to run this code, (1) with the tester (with a random passwords file that the tester generate ) or (2) without, on a real file.
+There is two ways to run this code, (1) with the tester (with a 100 random passwords file that the tester generate ) or (2) without, on a real file.
 
 --- (1) For a tester check, try:
 python ./test/tester.py
