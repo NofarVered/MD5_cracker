@@ -4,13 +4,15 @@ There are two ways to run this code, (1) with the tester (with a 100 random MD5 
 
 --- (1) For a tester check, try:
 
-python ./test/tester.py
+**_ python ./test/tester.py _**
+
+- After the test all the files are deleted automatically ... also the output. \*
 
 --- (2) If you want to check with your own file, try:
 
-python master.py -f ./test/hashes.txt -t 4
+**_ python master.py -f ./test/hashes_example.txt -t 4 _**
 
-./test/hashes.txt, is an example for a directory path
+"./test/hashes.txt" is an example for a directory path,
 
 and 4 is the number of threads you want, you can choose any number you want, the defult is 4.
 

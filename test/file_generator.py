@@ -14,4 +14,4 @@ def add_hashes_files():
         r.write(num_after_hash + ':' + num+'\n')
     f.close
     r.close
-    print('------------------ Hashes file created, and ready for tests!')
+    print('------------------ Welcome to the tester !')

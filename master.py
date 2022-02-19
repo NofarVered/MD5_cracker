@@ -8,7 +8,7 @@ import threading
 import time
 
 
-# we have 10^8 option of numbers with eight digits 05X-XXXXXXX
+# we have 10^8 options of passwords with eight digits 05X-XXXXXXX
 TOTAL_NUMBER = 100_000_000
 
 
@@ -56,6 +56,7 @@ def guess_numbers(start, end, hashes, founds):
 
 
 if __name__ == "__main__":
+    print("------------------ MASTER START")
     start_time = time.time()
     # handeling with files and args:
     parser = argparse.ArgumentParser()
@@ -93,4 +94,4 @@ if __name__ == "__main__":
     print("------------------ The output file is ready in your folder... :-) ")
     elapsed_time = time.time()
     total_time = elapsed_time - start_time
-    print("Seconds since epoch =", total_time)
+    print("------------------ Seconds since epoch =", total_time)
