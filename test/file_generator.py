@@ -9,5 +9,8 @@ for i in range(0, 101):
     f.write(hashlib.md5(num.encode(
         "utf-8")).hexdigest()+'\n')
 
-print('hashes file created, and ready for tests!')
+num = '05'+'00000000'
+f.write(hashlib.md5(num.encode("utf-8")).hexdigest()+'\n')
+
+print('------------------ Hashes file created, and ready for tests!')
 f.close

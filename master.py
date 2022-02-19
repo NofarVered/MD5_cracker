@@ -41,9 +41,11 @@ if __name__ == "__main__":
     founds = dict()
     hashes = set()
     open_read_hashes_file(file, hashes)
+    print(popularPasswords)
     cheack_popular_passwords(hashes, founds)
     # 1 --- create threads
     # 2 --- do some shit inside the threads
     # 3 --- @ Function definitions
     # 4 --- Read me file
     creat_output_file(founds)
+    print("------------------ Your output file is ready in your folder... :-) ")
