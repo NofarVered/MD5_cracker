@@ -2,10 +2,12 @@
 
 import hashlib
 import argparse
+from tkinter import EXCEPTION
 from popular_passwords_struct import popularPasswords
 import threading
 
-TOTAL_NUMBER = 100_000_000  # we have 10^8 option of numbers with eight digits
+# we have 10^8 option of numbers with eight digits 05X-XXXXXXX
+TOTAL_NUMBER = 100_000_000
 
 
 # open the given hashes-file and update the hashes-set with each md5-hash-password
@@ -31,19 +33,24 @@ def cheack_popular_passwords(hashes, founds):
         if key in hashes:
             founds[key] = val
             hashes.remove(key)
+            print("------------------ Hit with popular passwords dicionary!")
 
 
-# the thread function:
 # each thread should go over all the numbers in his range, from start-number to end-number.
 # then, check if the current number guess is in the hashes-set (should we crack it?)
 # for true only, we will put the deciphering password at founds-dictionary and remove it from hashes-set (cause we already cracked it)
 def guess_numbers(start, end, hashes, founds):
-    for num in range(start, end+1):
-        current_guess = '05' + str(num).zfill(8)
-        enc_curr_guess = hashlib.md5(current_guess.encode("utf-8")).hexdigest()
-        if enc_curr_guess in hashes:
-            founds[enc_curr_guess] = current_guess
-            hashes.remove(enc_curr_guess)
+    try:
+        for num in range(start, end+1):
+            current_guess = '05' + str(num).zfill(8)
+            enc_curr_guess = hashlib.md5(
+                current_guess.encode("utf-8")).hexdigest()
+            if enc_curr_guess in hashes:
+                founds[enc_curr_guess] = current_guess
+                hashes.remove(enc_curr_guess)
+    except EXCEPTION:
+        print("------------------ ERROR - inside thread")
+        pass
 
 
 if __name__ == "__main__":
@@ -60,7 +67,6 @@ if __name__ == "__main__":
     founds = dict()
     hashes = set()
     open_read_hashes_file(file, hashes)
-    print(popularPasswords)
     cheack_popular_passwords(hashes, founds)
     # create range based the number of threads:
     limit = int(TOTAL_NUMBER / threads_cnt)
@@ -76,8 +82,8 @@ if __name__ == "__main__":
             thread.append(run)
         for j in thread:
             j.join()
-    except:
-        # print "Erro"
+    except EXCEPTION:
+        print("------------------ ERROR - initialization threads")
         pass
     # create an output file by the founds passwords:
     creat_output_file(founds)
