@@ -14,6 +14,11 @@ After the test all the files are deleted automatically ... also the output.
 
 "./test/hashes.txt" is just an example for a directory path, and 4 is the number of threads you want, you can choose any number you want, the defult is 4.
 
+# output
+
+The output is a file that will wait for you, if anything didn't went wrong, at the same folder with the master.py.
+The schema of the output.txt is : "the_encrypted_password":"the_decrypted_password"
+
 # time
 
 BY MY TESTS:
