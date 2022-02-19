@@ -30,7 +30,6 @@ def creat_output_file(founds):
     output_f.close
 
 
-# the tpl_rng is a tuple with start and end numbers for limit search
 def guess_numbers(start, end, hashes, founds):
     for num in range(start, end+1):
         current_guess = '05' + str(num).zfill(8)
@@ -41,6 +40,7 @@ def guess_numbers(start, end, hashes, founds):
 
 
 if __name__ == "__main__":
+    # handeling with files and args:
     parser = argparse.ArgumentParser()
     parser.add_argument(
         '-f', help='File containing hashes', dest='file')
@@ -55,10 +55,11 @@ if __name__ == "__main__":
     open_read_hashes_file(file, hashes)
     print(popularPasswords)
     cheack_popular_passwords(hashes, founds)
-    # --- create threads
+    # create range:
     limit = int(TOTAL_NUMBER / threads_cnt)
     range_pool = [(end - limit, end - 1)
                   for end in range(limit, TOTAL_NUMBER+limit, limit)]
+    # create threads:
     thread = []
     try:
         for i in range(threads_cnt):
@@ -72,8 +73,6 @@ if __name__ == "__main__":
         # print "Erro"
         pass
 
-    # 3 --- @ Function definitions
-    # 4 --- Read me file
-    # 5 --- TESTER
+    # create an output file by the founds passwords:
     creat_output_file(founds)
     print("------------------ The output file is ready in your folder... :-) ")
