@@ -38,9 +38,10 @@ def cheack_popular_passwords(hashes, founds):
             print("------------------ Hit with popular passwords dicionary!")
 
 
-# each thread should go over all the numbers in his range, from start-number to end-number.
-# then, check if the current number guess is in the hashes-set (should we crack it?)
+# each thread will go over all the numbers in his given range, from start-number to end-number.
+# then, will check if the current number guess is in the hashes-set (should we crack it?)
 # for true only, we will put the deciphering password at founds-dictionary and remove it from hashes-set (cause we already cracked it)
+# there is no need on locks- the diffrent ranges give us isolation at the add, remove and search actions.
 def guess_numbers(start, end, hashes, founds):
     try:
         for num in range(start, end+1):
