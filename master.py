@@ -10,6 +10,7 @@ import time
 
 # we have 10^8 options of passwords with eight digits 05X-XXXXXXX
 TOTAL_NUMBER = 100_000_000
+DEFULT_NUMBER_OF_THREADS = 4
 
 
 # open the given hashes-file and update the hashes-set with each md5-hash-password
@@ -51,13 +52,14 @@ def guess_numbers(start, end, hashes, founds):
             if enc_curr_guess in hashes:
                 founds[enc_curr_guess] = current_guess
                 hashes.remove(enc_curr_guess)
-    except EXCEPTION:
+    except EXCEPTION as e:
         print("------------------ ERROR - inside the thread")
+        print(e)
         pass
 
 
 if __name__ == "__main__":
-    print("------------------ MASTER START")
+    print("------------------ MASTER STARTED")
     start_time = time.time()
     # handeling with files and args:
     parser = argparse.ArgumentParser()
@@ -68,7 +70,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
     file = args.file
     assert file
-    threads_cnt = args.threads or 4
+    threads_cnt = args.threads or DEFULT_NUMBER_OF_THREADS
     founds = dict()  # stores the password after we guess them.
     hashes = set()  # stores the hashes passwords from file.
     open_read_hashes_file(file, hashes)
@@ -87,8 +89,9 @@ if __name__ == "__main__":
             thread.append(run)
         for j in thread:
             j.join()
-    except EXCEPTION:
+    except EXCEPTION as e:
         print("------------------ ERROR - initialization threads")
+        print(e)
         pass
     # create an output file by the founds passwords:
     creat_output_file(founds)
