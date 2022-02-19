@@ -49,7 +49,7 @@ def guess_numbers(start, end, hashes, founds):
                 founds[enc_curr_guess] = current_guess
                 hashes.remove(enc_curr_guess)
     except EXCEPTION:
-        print("------------------ ERROR - inside thread")
+        print("------------------ ERROR - inside the thread")
         pass
 
 
