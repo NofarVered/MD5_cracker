@@ -12,6 +12,6 @@ popularPasswords[hashlib.md5(ser2.encode("utf-8")).hexdigest()] = ser2
 
 for i in range(0, 9):
     current_series = ('05'+''.join(["{}".format(i)
-                      for num in range(0, 8)]))  # same_num X 8
+                      for num in range(0, 8)]))  # same number 8 times
     popularPasswords[hashlib.md5(current_series.encode(
         "utf-8")).hexdigest()] = current_series
