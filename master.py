@@ -8,14 +8,14 @@ import threading
 TOTAL_NUMBER = 100_000_000  # we have 10^8 option of numbers with eight digits
 
 
-# open the given hashes-file, and update the hashes-set with each string-hash-password
+# open the given hashes-file and update the hashes-set with each md5-hash-password
 def open_read_hashes_file(file, hashes):
     with open(file, 'r') as f:
         for line in f:
             hashes.add(line.strip('\n'))
 
 
-# creat an output file for the user with the founds dictionary.
+# creat an output file for the user, using the founds dictionary.
 def creat_output_file(founds):
     output_f = open("output.txt", mode="w")
     for key, val in founds.items():
@@ -24,8 +24,8 @@ def creat_output_file(founds):
 
 
 # My assumption: the number of popular passwords is less than the number of hashes passwords.
-# so I choose to go over the data structure with a smaller number of objects, popularPasswords.
-# in case it is wrong, we just need to go over the hashes-set.
+# so I choose to go over the data structure with a smaller number of objects - popularPasswords.
+# in case it is wrong, I will just need to go over the hashes-set.
 def cheack_popular_passwords(hashes, founds):
     for key, val in popularPasswords.items():
         if key in hashes:
