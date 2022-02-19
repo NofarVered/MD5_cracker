@@ -4,7 +4,6 @@ import hashlib
 
 
 popularPasswords = dict()
-
 ser1 = '05'+''.join(["{}".format(num) for num in range(1, 9)])  # 1 to 8
 ser2 = '05'+''.join(["{}".format(num) for num in range(8, -1, -1)])  # 8 to 1
 popularPasswords[hashlib.md5(ser1.encode("utf-8")).hexdigest()] = ser1

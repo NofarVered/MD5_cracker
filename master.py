@@ -5,15 +5,17 @@ import argparse
 from popular_passwords_struct import popularPasswords
 import threading
 
-TOTAL_NUMBER = 100_000_000
+TOTAL_NUMBER = 100_000_000  # we have 10^8 option of numbers with eight digits
 
 
+# open the given hashes-file, and update the hashes-set with each string-hash-password
 def open_read_hashes_file(file, hashes):
     with open(file, 'r') as f:
         for line in f:
             hashes.add(line.strip('\n'))
 
 
+# creat an output file for the user with the founds dictionary.
 def creat_output_file(founds):
     output_f = open("output.txt", mode="w")
     for key, val in founds.items():
@@ -21,8 +23,9 @@ def creat_output_file(founds):
     output_f.close
 
 
-# Assumption: the number of popular passwords is less than the number of hashes passwords
-# so I choose the data structure with a smaller number of objects.
+# My assumption: the number of popular passwords is less than the number of hashes passwords.
+# so I choose to go over the data structure with a smaller number of objects, popularPasswords.
+# in case it is wrong, we just need to go over the hashes-set.
 def cheack_popular_passwords(hashes, founds):
     for key, val in popularPasswords.items():
         if key in hashes:
@@ -30,6 +33,9 @@ def cheack_popular_passwords(hashes, founds):
             hashes.remove(key)
 
 
+# each thread should go over all the numbers in his range, from start-number to end-number.
+# then, check if the current number guess is in the hashes-set (should we crack it?)
+# for true only, we will put the deciphering password at founds-dictionary and remove it from hashes-set (cause we already found it)
 def guess_numbers(start, end, hashes, founds):
     for num in range(start, end+1):
         current_guess = '05' + str(num).zfill(8)
@@ -55,7 +61,7 @@ if __name__ == "__main__":
     open_read_hashes_file(file, hashes)
     print(popularPasswords)
     cheack_popular_passwords(hashes, founds)
-    # create range:
+    # create range based the number of threads:
     limit = int(TOTAL_NUMBER / threads_cnt)
     range_pool = [(end - limit, end - 1)
                   for end in range(limit, TOTAL_NUMBER+limit, limit)]
