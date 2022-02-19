@@ -8,15 +8,6 @@ import threading
 TOTAL_NUMBER = 100_000_000
 
 
-# Assumption: the number of popular passwords is less than the number of hashes passwords
-# so I choose the data structure with a smaller number of objects.
-def cheack_popular_passwords(hashes, founds):
-    for key, val in popularPasswords.items():
-        if key in hashes:
-            founds[key] = val
-            hashes.remove(key)
-
-
 def open_read_hashes_file(file, hashes):
     with open(file, 'r') as f:
         for line in f:
@@ -28,6 +19,15 @@ def creat_output_file(founds):
     for key, val in founds.items():
         output_f.write(key + ":" + val + "\n")
     output_f.close
+
+
+# Assumption: the number of popular passwords is less than the number of hashes passwords
+# so I choose the data structure with a smaller number of objects.
+def cheack_popular_passwords(hashes, founds):
+    for key, val in popularPasswords.items():
+        if key in hashes:
+            founds[key] = val
+            hashes.remove(key)
 
 
 def guess_numbers(start, end, hashes, founds):
@@ -64,7 +64,7 @@ if __name__ == "__main__":
     try:
         for i in range(threads_cnt):
             run = threading.Thread(target=guess_numbers,
-                                   args=(range_pool[i][0], range_pool[i][1], founds))
+                                   args=(range_pool[i][0], range_pool[i][1], hashes, founds))
             run.start()
             thread.append(run)
         for j in thread:
@@ -72,7 +72,6 @@ if __name__ == "__main__":
     except:
         # print "Erro"
         pass
-
     # create an output file by the founds passwords:
     creat_output_file(founds)
     print("------------------ The output file is ready in your folder... :-) ")
