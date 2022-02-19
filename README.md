@@ -11,7 +11,7 @@ python master.py -f ./test/hashes.txt -t 4
 
 ./test/hashes.txt, is an example for a directory path
 
-and 4 is the number of threads you want, you can choose whatever you want, the defult is 4.
+and 4 is the number of threads you want, you can choose any number you want, the defult is 4.
 
 # time
 
