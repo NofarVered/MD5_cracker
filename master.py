@@ -68,8 +68,8 @@ if __name__ == "__main__":
     file = args.file
     assert file
     threads_cnt = args.threads or 4
-    founds = dict()
-    hashes = set()
+    founds = dict()  # stores the password after we guess them.
+    hashes = set()  # stores the hashes passwords from file.
     open_read_hashes_file(file, hashes)
     cheack_popular_passwords(hashes, founds)
     # create range based the number of threads:

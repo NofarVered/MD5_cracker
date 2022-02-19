@@ -19,7 +19,7 @@ if __name__ == "__main__":
     if ans:
         print(" ------------------ Success! ")
     else:
-        print("Somthing is Wrong... ")
+        print(" ------------------ Somthing is Wrong... ")
     os.remove("./test/results.txt")
     os.remove("output.txt")
     os.remove("./test/hashes.txt")
