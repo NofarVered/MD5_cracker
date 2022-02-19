@@ -12,7 +12,7 @@ After the test all the files are deleted automatically ... also the output.
 
 **_ python master.py -f ./test/hashes_example.txt -t 4 _**
 
-"./test/hashes.txt" is just an example for a directory path, and 4 is the number of threads you want, you can choose any number you want, the defult is 4.
+"./test/hashes_example.txt" is just an example for a directory path, and 4 is the number of threads you want, you can choose any number you want, the defult is 4.
 
 # output
 
@@ -24,3 +24,7 @@ The schema of the output.txt is : "the_encrypted_password":"the_decrypted_passwo
 BY MY TESTS:
 
 A file with a hundred passwords took my computer, a pretty lame machine with two cores, 3.05209198395411 minutes (= 183.1255190372467 seconds).
+
+# Example hashes file
+
+There is a hashes_example.txt file for your own use.
