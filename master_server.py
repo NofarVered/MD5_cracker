@@ -28,10 +28,12 @@ if __name__ == "__main__":
     file = args.file
     assert file
     threads_cnt = args.threads or DEFULT_NUMBER_OF_THREADS
+
     founds = dict()  # stores the password after we guess them.
     hashes = set()  # stores the hashes passwords from file.
     fs.open_read_hashes_file(file, hashes)
     ps.cheack_popular_passwords(hashes, founds)
+
     # create range based the number of threads:
     limit = int(TOTAL_NUMBER / threads_cnt)
     range_pool = [(end - limit, end - 1)
@@ -51,8 +53,8 @@ if __name__ == "__main__":
         print(e)
         pass
     # create an output file by the founds passwords:
+
     fs.creat_output_file(founds)
     print("------------------ The output file is ready in your folder... :-) ")
     elapsed_time = time.time()
-    total_time = elapsed_time - start_time
-    print("------------------ Seconds since epoch =", total_time)
+    print("------------------ Seconds since epoch =", elapsed_time - start_time)
