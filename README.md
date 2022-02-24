@@ -1,6 +1,7 @@
 #notes to myself:
--Restful
--errors in threads
+-The communication between the master and the minions should be RESTful.
+-Your solution should include crash handling (What happens if any of the minions, or
+the master, stops in mid-run).
 
 # MD5_cracker
 
