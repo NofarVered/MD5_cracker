@@ -1,3 +1,7 @@
+#notes to myself:
+-Restful
+-errors in threads
+
 # MD5_cracker
 
 There are two ways to run this code, (1) with the tester (100 random MD5 passwords file that the tester generates ) or (2) without, on a real file.
