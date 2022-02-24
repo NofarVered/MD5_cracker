@@ -18,6 +18,7 @@ DEFULT_NUMBER_OF_THREADS = 4
 if __name__ == "__main__":
     print("------------------ MASTER STARTED")
     start_time = time.time()
+
     # handeling with files and args:
     parser = argparse.ArgumentParser()
     parser.add_argument(
@@ -38,6 +39,7 @@ if __name__ == "__main__":
     limit = int(TOTAL_NUMBER / threads_cnt)
     range_pool = [(end - limit, end - 1)
                   for end in range(limit, TOTAL_NUMBER+limit, limit)]
+
     # create threads:
     thread = []
     try:
@@ -52,8 +54,8 @@ if __name__ == "__main__":
         print("------------------ ERROR - initialization threads")
         print(e)
         pass
-    # create an output file by the founds passwords:
 
+    # create an output file by the founds passwords:
     fs.creat_output_file(founds)
     print("------------------ The output file is ready in your folder... :-) ")
     elapsed_time = time.time()
