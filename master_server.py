@@ -5,6 +5,7 @@ import argparse
 from tkinter import EXCEPTION
 import utils.popular_passwords_struct as ps
 import utils.files as fs
+import minion_server as ms
 import threading
 import time
 
@@ -12,25 +13,6 @@ import time
 # we have 10^8 options of passwords with eight digits 05X-XXXXXXX
 TOTAL_NUMBER = 100_000_000
 DEFULT_NUMBER_OF_THREADS = 4
-
-
-# each thread will go over all the numbers in his given range, from start-number to end-number.
-# then, will check if the current number guess is in the hashes-set (should we crack it?)
-# for true only, we will put the deciphering password at founds-dictionary and remove it from hashes-set (cause we already cracked it)
-# there is no need for locks- the diffrent ranges give us isolation at the add, remove and search actions.
-def guess_numbers(start, end, hashes, founds):
-    try:
-        for num in range(start, end+1):
-            current_guess = '05' + str(num).zfill(8)
-            enc_curr_guess = hashlib.md5(
-                current_guess.encode("utf-8")).hexdigest()
-            if enc_curr_guess in hashes:
-                founds[enc_curr_guess] = current_guess
-                hashes.remove(enc_curr_guess)
-    except EXCEPTION as e:
-        print("------------------ ERROR - inside the thread")
-        print(e)
-        pass
 
 
 if __name__ == "__main__":
@@ -58,7 +40,7 @@ if __name__ == "__main__":
     thread = []
     try:
         for i in range(threads_cnt):
-            run = threading.Thread(target=guess_numbers,
+            run = threading.Thread(target=ms.guess_numbers,
                                    args=(range_pool[i][0], range_pool[i][1], hashes, founds))
             run.start()
             thread.append(run)

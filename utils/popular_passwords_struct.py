@@ -1,11 +1,11 @@
 import hashlib
 
 NUM_OF_DIGITS = 8
+
+
 # My assumption: the number of popular passwords is less than the number of hashes passwords.
 # so I choose to go over the data structure with a smaller number of objects - popularPasswords.
 # in case it is wrong, I will just need to go over the hashes-set.
-
-
 def cheack_popular_passwords(hashes, founds):
     for key, val in popularPasswords.items():
         if key in hashes:
