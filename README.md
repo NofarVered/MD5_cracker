@@ -10,7 +10,7 @@ After the test all the files are deleted automatically ... also the output.
 
 - (2) If you want to check with your own file, try:
 
-**_ python master.py -f ./test/hashes_example.txt -t 4 _**
+**_ python master_server.py -f ./test/hashes_example.txt -t 4 _**
 
 "./test/hashes_example.txt" is just an example for a directory path, and 4 is the number of threads you want, you can choose any number you want, the defult is 4.
 

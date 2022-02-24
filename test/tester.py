@@ -5,7 +5,7 @@ from file_generator import add_hashes_files
 
 if __name__ == "__main__":
     add_hashes_files()
-    os.system('python master.py -f ./test/hashes.txt')
+    os.system('python master_server.py -f ./test/hashes.txt')
     results = set()
     with open("./test/results.txt", 'r') as f:
         for line in f:
